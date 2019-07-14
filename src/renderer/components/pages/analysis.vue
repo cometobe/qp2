@@ -1,7 +1,7 @@
 <template>
   <div>
     <navg></navg>
-    <div id="myChart" :style="{width: '1000px', height: '600px'}"></div>
+    <div id="myChart" :style="{width:'100%', height: '600px'}"></div>
   </div>
 </template>
 <script>
@@ -61,6 +61,7 @@ export default {
         ],
         series: this.$store.getters.totalscore
       });
+      window.onresize = myChart.resize;
     }
   }
 };

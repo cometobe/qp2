@@ -79,6 +79,8 @@ export default {
     // }
         // console.log(this.tableData,"数据检查",this.$store.state.standlib.data)
         // console.log("getter",this.$store.getters.members)
+        //2更新标准库数据
+    this.$store.dispatch("getlib").then(); 
   },
   computed:{
  tableData1(){

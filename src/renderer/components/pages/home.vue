@@ -60,34 +60,20 @@
 </template>
 
 <script>
-// import SystemInformation from "./LandingPage/SystemInformation";
-
 import moment from "moment";
 import { get, post, del } from "@/api/api.js";
 export default {
   name: "home-page",
-  // components: { SystemInformation },
-  beforeCreate() {
+  mounted() {
     // 页面加载时调用远方配置数据
     //1更新设置数据
-    this.$store.dispatch("getmember").then(
-//2更新标准库数据
-    this.$store.dispatch("getlib").then(()=>{
-//3更新输出数据
-    let month = moment(this.$store.state.setting.formDynamic.date).format("YYYY-MM")
-    let members = this.$store.getters.members;
-    get("/pdata/search/", { m: members, month: month }).then(res => {
-      console.log("后台查询所有数据时res", res);
-      // for(let i = 0;i<res.data.length;i++){
-      //   this.fordata.push(res.data[i])
-      // }
-      this.$store.dispatch("handlerdata", res.data);
-    });}
+    this.$store.dispatch("getmember").then(()=>{
+      console.log("lastthen",this.$store.state);
+      console.log(moment(this.$store.state.setting.formDynamic.date).format("YYYY-MM"),this.$store.getters.members);
+    this.$store.dispatch("handlerdata", { m: this.$store.getters.members, month: moment(this.$store.state.setting.formDynamic.date).format("YYYY-MM") })
+
+    },
     )
-    );
-    
-    
-    // })
   },
   methods: {
     open(link) {

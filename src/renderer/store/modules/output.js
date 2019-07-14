@@ -10,14 +10,31 @@ const state = {
 }
 
 const actions = {
-    handlerdata: ({ commit, state }, res) => {
+    // handlerdata: ({ commit, state }, res) => {
+    //     return new Promise((resolve) => {
+    //         // console.log("actions", state)
+    //         console.log('获取后台所有数据成功', res);
+    //         for (let i = 0; i < res.length; i++) {
+    //             res[i]["序号"] = i + 1
+    //         }
+    //         commit('SAVEALLDATA', res, state)
+    //     });
+    // },
+    handlerdata: ({ commit, state }, payload) => {
         return new Promise((resolve) => {
-            // console.log("actions", state)
-            console.log('获取后台所有数据成功', res);
-            for (let i = 0; i < res.length; i++) {
-                res[i]["序号"] = i + 1
-            }
-            commit('SAVEALLDATA', res, state)
+            console.log("actions-handlerdata", state,payload)
+            get("/pdata/search/", payload).then(res => {
+                  console.log("后台查询所有数据时res", res);
+                  for (let i = 0; i < res.data.length; i++) {
+                    res.data[i]["序号"] = i + 1
+                }
+                  commit('SAVEALLDATA', res.data, state)
+                  // for(let i = 0;i<res.data.length;i++){
+                  //   this.fordata.push(res.data[i])
+                  })
+            // console.log('获取后台所有数据成功', res);
+            
+            // commit('SAVEALLDATA', res, state)
         });
     },
 }

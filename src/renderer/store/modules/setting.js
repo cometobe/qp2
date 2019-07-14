@@ -34,14 +34,14 @@ const state = {
 const actions = {
     getmember: ({ commit, state }) => {
         return new Promise((resolve) => {
-            console.log("actions", state)
+            console.log("actions-getmember", state)
             get('/config/query')
                 .then((res) => {
                     console.log('获取config数据成功', res.data[0], state);
                     if (res.data[0]!=undefined){
                         commit('SAVECONFIG', res.data[0], state)
                     }
-                    // resolve(res);
+                    resolve(res);
                     console.log("检查state", state)
                 })
                 .catch(error => {
