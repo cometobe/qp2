@@ -1,5 +1,5 @@
 {
-  "name": "pfnt",
+  "name": "lianghuajixiaofuzhu",
   "version": "1.1.0",
   "author": "qushaojun",
   "description": "An electron-vue project",
@@ -17,7 +17,7 @@
     "postinstall": ""
   },
   "build": {
-    "productName": "pfnt",
+    "productName": "lianghuajixiaofuzhu",
     "appId": "com.example.yourapp",
     "directories": {
       "output": "build"

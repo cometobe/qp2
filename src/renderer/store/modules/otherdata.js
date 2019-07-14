@@ -6,8 +6,7 @@ import { get, post, del } from "@/api/api.js";
 Vue.use(Vuex);
 
 const state = {
-    database:[],
-    outputdata:[]
+    database:[]
 }
     ;
 

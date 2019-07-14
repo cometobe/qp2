@@ -2,7 +2,7 @@
   <div>
     <Row>
       <Col span="12" offset="2" style="padding-top:60px">
-        <img id="logo" src="~@/assets/logo.jpg" alt="electron-vue">
+        <img id="logo" src="~@/assets/logo.jpg" alt="electron-vue" />
       </Col>
     </Row>
     <Row style="padding-top:60px">
@@ -12,8 +12,7 @@
             <h1>
               <router-link to="/stand">
                 <!-- <img src="~@/assets/2.png" width="200px"> -->
-                <Icon type="ios-options-outline" size="200" />
-                标准库
+                <Icon type="ios-options-outline" size="200" />标准库
               </router-link>
             </h1>
           </div>
@@ -25,8 +24,7 @@
             <h1>
               <router-link to="/excel">
                 <!-- <img src="~@/assets/1.png" width="200px"> -->
-                <Icon type="ios-git-network" size="200" />
-                数据导入
+                <Icon type="ios-git-network" size="200" />数据导入
               </router-link>
             </h1>
           </div>
@@ -37,7 +35,7 @@
           <div style="text-align:center">
             <h1>
               <router-link to="/trend">
-              <Icon type="ios-trending-up" size="200" />
+                <Icon type="ios-trending-up" size="200" />
                 <!-- <img src="~@/assets/3.png" width="200px"> -->
                 积分查询
               </router-link>
@@ -51,8 +49,7 @@
             <h1>
               <router-link to="/setting">
                 <!-- <img src="~@/assets/2.png" width="200px"> -->
-                <Icon type="ios-settings-outline" size="200" />
-                基本配置
+                <Icon type="ios-settings-outline" size="200" />基本配置
               </router-link>
             </h1>
           </div>
@@ -65,15 +62,32 @@
 <script>
 // import SystemInformation from "./LandingPage/SystemInformation";
 
+import moment from "moment";
+import { get, post, del } from "@/api/api.js";
 export default {
   name: "home-page",
   // components: { SystemInformation },
   beforeCreate() {
     // 页面加载时调用远方配置数据
-        this.$store.dispatch("getmember")
-this.$store.dispatch("getlib")
-        // })
-        
+    //1更新设置数据
+    this.$store.dispatch("getmember").then(
+//2更新标准库数据
+    this.$store.dispatch("getlib").then(()=>{
+//3更新输出数据
+    let month = moment(this.$store.state.setting.formDynamic.date).format("YYYY-MM")
+    let members = this.$store.getters.members;
+    get("/pdata/search/", { m: members, month: month }).then(res => {
+      console.log("后台查询所有数据时res", res);
+      // for(let i = 0;i<res.data.length;i++){
+      //   this.fordata.push(res.data[i])
+      // }
+      this.$store.dispatch("handlerdata", res.data);
+    });}
+    )
+    );
+    
+    
+    // })
   },
   methods: {
     open(link) {

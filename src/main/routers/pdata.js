@@ -42,16 +42,20 @@ router.post('/api/pdata/add', async (ctx, next) => {
 
     // console.log('收到的数据', ctx.request.body,data["任务编号"]);
     let newlib;
-    newlib = await new Promise(function (resolve, reject) {
+    // newlib = await new Promise(function (resolve, reject) {
         let slibfind = new Promise(function (resolve, reject) {
             slibdata.find({ "任务编号": data["任务编号"] }).exec(function (err, docs) {
                 // console.log("查询id",data["任务编号"],docs)
-                if (docs.length > 0) {
+                if (docs.length ==1) {
                     data["工作类别"] = docs[0].工作类别
                     data["工作任务"] = docs[0].工作任务
                     data["工作任务基准积分"] = docs[0].工作任务积分
                     data["最后积分"] = docs[0].工作任务积分
                     data["工作完成质量系数"] = "1"
+                    pdatalib.insert(data, function (err, docs) {
+                        // console.log('错误', err);
+                        resolve(docs)
+                    })
                 }
                 else {
                     // console.log("查询id",data["任务编号"])
@@ -60,14 +64,11 @@ router.post('/api/pdata/add', async (ctx, next) => {
             });
         });
         // console.log(slibfind.then)
-        slibfind.then(() => {
-            pdatalib.insert(data, function (err, docs) {
-                // console.log('错误', err);
-                resolve(docs)
-            })
-        })
-    });
-    ctx.response.body = { data: newlib, msg: '添加成功' };
+        // slibfind.then(() => {
+            
+        // })
+    // });
+    ctx.response.body = { data: slibfind, msg: '添加成功' };
     ctx.status = 200;
 });
 //3 查询所有数据
@@ -137,7 +138,7 @@ router.get('/api/pdata/search/', async (ctx, next) => {
             // console.log(err,docs)
         });
     });
-    let alldata = czlib.concat(slib, flib, olib, gzlib, plib)
+    let alldata = plib.concat(slib, flib, olib, gzlib,czlib )
     // console.log('列表', lib);
     ctx.response.body = { data: alldata, msg: '数据查询成功' };
     ctx.status = 200;

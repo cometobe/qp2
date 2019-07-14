@@ -46,13 +46,7 @@ export default {
     };
   },
   mounted() {
-    console.log(this.tableData, "数据检查2", this.$store.state.standlib.data);
-    // this.tableData = this.$store.state.standlib.data[0]
-    // let month = this.$store.state.setting.formDynamic.date.substr(0,[7])
-    let month = moment(this.$store.state.setting.formDynamic.date).format(
-      "YYYY-MM"
-    );
-    console.log("月份", month);
+let month = moment(this.$store.state.setting.formDynamic.date).format("YYYY-MM")
     let members = this.$store.getters.members;
     get("/pdata/search/", { m: members, month: month }).then(res => {
       console.log("后台查询所有数据时res", res);
@@ -60,7 +54,15 @@ export default {
       //   this.fordata.push(res.data[i])
       // }
       this.$store.dispatch("handlerdata", res.data);
-    });
+    })
+
+
+    // console.log(this.tableData, "数据检查2", this.$store.state.standlib.data);
+    // this.tableData = this.$store.state.standlib.data[0]
+    // let month = this.$store.state.setting.formDynamic.date.substr(0,[7])
+    
+    // console.log("月份", month);
+    
     // for(let i = 0 ; i<this.$store.state.standlib.data.length;i++){
     //   this.tableData.push(this.$store.state.standlib.data[i])
     // }

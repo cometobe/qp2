@@ -382,7 +382,7 @@ export default {
             for (let n in ndata) {
               //上传数据库
               post("/pdata/add", ndata[n]).then(res => {
-                console.log("回调", n,res);
+                // console.log("回调", n,res);
                 return;
               });
             }
