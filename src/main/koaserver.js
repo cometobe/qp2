@@ -26,12 +26,12 @@ const Datastore = require('nedb');//配置nedb
 
 
 //静态资源
-const serve = require("koa-static");
+// const serve = require("koa-static");
 // server.use(serve(__dirname + '/' + "public"),
 //     console.log('server1'+__dirname + '/' + "public"));
-server.use(serve( path.join(path3 + '/data/' + 'upload')),
+// server.use(serve( path.join(path3 + '/data/' + 'upload')),
     // console.log('server2'+ path.join(path3 + '/data/' + 'upload'))
-);
+// );
 // server.use(serve(path.join('/data'),'/'),console.log(path.join('/data')));
 
 
@@ -54,34 +54,34 @@ server.use(require('./routers/odata.js').routes());
 server.use(require('./routers/czdata.js').routes());
 server.use(require('./routers/gzdata.js').routes());
 
-server.use(koaBody({
-    multipart: true,
-    encoding: 'gzip',
-    formidable: {
-        maxFileSize: 200 * 1024 * 1024    // 设置上传文件大小最大限制，默认2M
-    }
-}));
-router.post('/api/postimage', async (ctx, next) => {
-    // console.log('ctx检查', ctx.request.file, ctx.request.body.file, ctx)
-    // console.log(ctx.request.files.fileminiurl)
-    // 上传单个文件
-    const file = ctx.request.files.file; // 获取上传文件
-    let prefix = new Date().format('yyyyMMddhhmmss').substr(0, 18)
-    // 创建可读流
-    const reader = fs.createReadStream(file.path);
-    let filePath = path.join(path3, '/data/upload/') + prefix + '_' + `${file.name}`;
-    // console.log('路径', filePath)
-    // 创建可写流
-    const upStream = fs.createWriteStream(filePath);
-    // 可读流通过管道写入可写流
-    reader.pipe(upStream);
-    return ctx.body = {msg: file.name + "上传成功！", name: prefix + '_' + `${file.name}`};
-});
+// server.use(koaBody({
+//     multipart: true,
+//     encoding: 'gzip',
+//     formidable: {
+//         maxFileSize: 200 * 1024 * 1024    // 设置上传文件大小最大限制，默认2M
+//     }
+// }));
+// router.post('/api/postimage', async (ctx, next) => {
+//     // console.log('ctx检查', ctx.request.file, ctx.request.body.file, ctx)
+//     // console.log(ctx.request.files.fileminiurl)
+//     // 上传单个文件
+//     const file = ctx.request.files.file; // 获取上传文件
+//     let prefix = new Date().format('yyyyMMddhhmmss').substr(0, 18)
+//     // 创建可读流
+//     const reader = fs.createReadStream(file.path);
+//     let filePath = path.join(path3, '/data/upload/') + prefix + '_' + `${file.name}`;
+//     // console.log('路径', filePath)
+//     // 创建可写流
+//     const upStream = fs.createWriteStream(filePath);
+//     // 可读流通过管道写入可写流
+//     reader.pipe(upStream);
+//     return ctx.body = {msg: file.name + "上传成功！", name: prefix + '_' + `${file.name}`};
+// });
 
-server.use(router.routes());
+// server.use(router.routes());
 
 
-server.listen(5000);//启动koa服务器
+server.listen(5050);//启动koa服务器
 console.log('server started at port 5000...')
 
 export {server}

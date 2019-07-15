@@ -17,7 +17,7 @@
     "postinstall": ""
   },
   "build": {
-    "productName": "lianghuajixiaofuzhu",
+    "productName": "量化绩效辅助工具",
     "appId": "com.example.yourapp",
     "directories": {
       "output": "build"
@@ -48,7 +48,12 @@
     },
     "linux": {
       "icon": "build/icons"
-    }
+    },
+    "nsis": { 
+      "oneClick": false,   
+      "allowToChangeInstallationDirectory": true, 
+      "perMachine": true
+  }
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -61,12 +66,8 @@
     "koa-body": "^4.0.4",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "koa-static": "^5.0.0",
-    "marked": "^0.5.0",
-    "mavon-editor": "^2.6.17",
     "moment": "^2.24.0",
     "nedb": "^1.8.0",
-    "tui-calendar": "^1.6.0",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",

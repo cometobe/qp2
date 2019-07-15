@@ -81,7 +81,7 @@ function createWindow() {
 
 
 // app.setPath('userData', path.join('e:/data'))
-app.setName('量化绩效')
+app.setName('量化绩效辅助工具')
 app.on('ready', createWindow);
 // app.on('ready', initApp);
 
