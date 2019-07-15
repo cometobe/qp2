@@ -1,22 +1,23 @@
 <template>
   <div>
     <navg></navg>
-    <div v-for="(item,index) in uploadlist" style="padding:20px"> 
+    <div v-for="(item,index) in uploadlist" style="padding:10px"> 
         <Row>
-          <Col span="2" offset="1"> 
+          <Col span="1" offset="0"> 
         <Button @click="deletedata(index)" icon="md-close" type="warning" ghost></Button>
           </col>
-          <Col span="5" offset="0">
+          <Col span="5" offset="1">
         <Upload :before-upload="(item)=> handleUpload(index, item)" action accept=".xls, .xlsx" >
           <Tooltip :content="contents[index]" >
             <Button icon="ios-cloud-upload-outline">上传{{ item.title }}数据文件</Button>
             </Tooltip>
           </Upload>
           </col>
-        <Col span="5" offset="1"> 
+        <Col span="4" offset="1"> 
           <p v-if="item !== null">{{ item.title }}文件名:{{ item.filename }}</p>
         </col>
         </Row>
+        <Divider dashed />
     </div>
     <!-- <Button
       type="primary"
@@ -249,6 +250,7 @@ export default {
         if (index == 0){
           get("/pdata/clrall").then(res => {
             this.$Message.info(res.num + "条" + res.msg);
+            this.$store.dispatch("handlerdata")
           });
         }
         else if(index ==1 ){
@@ -618,4 +620,8 @@ export default {
 .center-right{
         float: right;
     }
+
+.ivu-divider-horizontal{
+  margin: 5px;
+}
 </style>

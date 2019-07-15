@@ -31,7 +31,7 @@ export default {
       let myChart = this.$echarts.init(document.getElementById("myChart"));
       // 绘制图表
       myChart.setOption({
-        title: { text: "积分数据分析" },
+        title: { text: moment(this.$store.state.setting.formDynamic.date).format("YYYY年MM月") },
         tooltip: {
           trigger: "axis",
           axisPointer: {
@@ -40,7 +40,7 @@ export default {
           }
         },
         legend: {
-          data: ["总分", "百度", "谷歌", "必应", "其他"]
+          data: this.$store.getters.allcatalog
         },
         grid: {
           left: "3%",

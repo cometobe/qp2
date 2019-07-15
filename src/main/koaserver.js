@@ -1,15 +1,15 @@
 const Koa = require('koa');
 const server = new Koa();
-const router = require('koa-router')();
+// const router = require('koa-router')();
 const bodyParser = require('koa-bodyparser');
-const koaBody = require('koa-body');
-const fs = require('fs');
-const path = require('path');
-const {path1,path3} = require('./index.config.js')
+// const koaBody = require('koa-body');
+// const fs = require('fs');
+// const path = require('path');
+// const {path1,path3} = require('./index.config.js')
 
 
 //新建数据库
-const Datastore = require('nedb');//配置nedb
+// const Datastore = require('nedb');//配置nedb
 
 //新建数据库
 // const db = {pdatalib : new Datastore({

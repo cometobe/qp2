@@ -22,24 +22,37 @@ const actions = {
     // },
     handlerdata: ({ commit, state }, payload) => {
         return new Promise((resolve) => {
-            console.log("actions-handlerdata", state,payload)
+            console.log("actions-handlerdata", state, payload)
             get("/pdata/search/", payload).then(res => {
-                  console.log("后台查询所有数据时res", res);
-                  for (let i = 0; i < res.data.length; i++) {
+                console.log("后台查询所有数据时res", res);
+                for (let i = 0; i < res.data.length; i++) {
                     res.data[i]["序号"] = i + 1
                 }
-                  commit('SAVEALLDATA', res.data, state)
-                  // for(let i = 0;i<res.data.length;i++){
-                  //   this.fordata.push(res.data[i])
-                  })
+                commit('SAVEALLDATA', res.data, state)
+                // for(let i = 0;i<res.data.length;i++){
+                //   this.fordata.push(res.data[i])
+            })
             // console.log('获取后台所有数据成功', res);
-            
+
             // commit('SAVEALLDATA', res, state)
         });
     },
 }
 
 const getters = {
+    allcatalog: function () {
+        // 统计工作类别
+        var nameContainer = []; // 针对键name进行归类的容器
+        state.outputdata.forEach(item => {
+            nameContainer[item.工作类别] = nameContainer[item.工作类别] || [];
+
+            //当逻辑或||时，找到为true的分项就停止处理，并返回该分项的值，否则执行完，并返回最后分项的值。
+
+            nameContainer.push(item.工作类别);
+        });
+        const catalog = [...new Set(nameContainer)];//得到最终的工作类别数组，去重
+        return ['总分'].concat(catalog)
+    },
     totalscore: function (e) {//用于echart的数据
         console.log("this.members[1]", state, setting, setting.getters.members(setting.state))
         let members = setting.getters.members(setting.state)
@@ -82,7 +95,7 @@ const getters = {
                         type: 'dashed'
                     }
                 },
-                data: [{ name: '平均线', type: 'average', label: { position: "start" } }]
+                data: [{ name: '平均分', type: 'average', label: { position: "middle",formatter: '{b}:{c}'} }]
             }
         })
         function sums(e) {//求和
