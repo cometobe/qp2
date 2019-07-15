@@ -20,6 +20,9 @@
         <MenuItem name="Setting">
           <Icon type="md-settings" />设置
         </MenuItem>
+        <MenuItem name="test">
+          <Icon type="md-settings" />测试
+        </MenuItem>
       </Menu>
     </Row>
   </div>

@@ -6,7 +6,8 @@ import { get, post, del } from "@/api/api.js";
 Vue.use(Vuex);
 import setting from './setting';
 const state = {
-    outputdata: []
+    outputdata: [],
+    longtabledata:[]
 }
 
 const actions = {
@@ -25,10 +26,25 @@ const actions = {
             console.log("actions-handlerdata", state, payload)
             get("/pdata/search/", payload).then(res => {
                 console.log("后台查询所有数据时res", res);
+                let dataArr = [];
                 for (let i = 0; i < res.data.length; i++) {
                     res.data[i]["序号"] = i + 1
+                    let arr = [
+                        res.data[i].序号,
+                        res.data[i].人员,
+                        res.data[i].时间,
+                        res.data[i].工作类别,
+                        res.data[i].工作任务,
+                        res.data[i].任务编号,
+                        res.data[i].工作任务基准积分,
+                        res.data[i].工作完成质量系数,
+                        res.data[i].最后积分,
+                        res.data[i].备注工作内容
+                    ];
+                    dataArr.push(arr);
                 }
                 commit('SAVEALLDATA', res.data, state)
+                commit('SAVELONGDATA',dataArr, state)
                 // for(let i = 0;i<res.data.length;i++){
                 //   this.fordata.push(res.data[i])
             })
@@ -40,6 +56,7 @@ const actions = {
 }
 
 const getters = {
+    
     allcatalog: function () {
         // 统计工作类别
         var nameContainer = []; // 针对键name进行归类的容器
@@ -95,7 +112,7 @@ const getters = {
                         type: 'dashed'
                     }
                 },
-                data: [{ name: '平均分', type: 'average', label: { position: "middle",formatter: '{b}:{c}'} }]
+                data: [{ name: '平均分', type: 'average', label: { position: "middle", formatter: '{b}:{c}' } }]
             }
         })
         function sums(e) {//求和
@@ -149,6 +166,10 @@ const mutations = {
     SAVEALLDATA(state, res) {
         console.log('提交的其他数据至res->state', res, state);
         state.outputdata = res
+    },
+    SAVELONGDATA(state, res) {
+        console.log('提交的LONGTABLE数据至res->state', res, state);
+        state.longtabledata = res
     }
 }
 

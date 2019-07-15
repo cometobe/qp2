@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import excel from "@/utils/ejs.js";
+// import excel from "@/utils/ejs.js";
 import { get, post, del } from "@/api/api.js";
 import moment from "moment";
 import navg from "@/components/subpages/nav";

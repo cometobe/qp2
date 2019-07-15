@@ -1,40 +1,17 @@
 <template>
-    <div class="demo-upload-list" v-for="item in uploadList">
-        <template v-if="item.status === 'finished'">
-            <img :src="item.url">
-            <div class="demo-upload-list-cover">
-                <Icon type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
-                <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
-            </div>
-        </template>
-        <template v-else>
-            <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
-        </template>
+    <div>
+        <navg></navg>
+        <longtable></longtable>
     </div>
-    <Upload
-        ref="upload"
-        :show-upload-list="false"
-        :default-file-list="defaultList"
-        :on-success="handleSuccess"
-        :format="['jpg','jpeg','png']"
-        :max-size="2048"
-        :on-format-error="handleFormatError"
-        :on-exceeded-size="handleMaxSize"
-        :before-upload="handleBeforeUpload"
-        multiple
-        type="drag"
-        action="//jsonplaceholder.typicode.com/posts/"
-        style="display: inline-block;width:58px;">
-        <div style="width: 58px;height:58px;line-height: 58px;">
-            <Icon type="ios-camera" size="20"></Icon>
-        </div>
-    </Upload>
-    <Modal title="View Image" v-model="visible">
-        <img :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'" v-if="visible" style="width: 100%">
-    </Modal>
 </template>
 <script>
+import navg from "@/components/subpages/nav";
+import longtable from "@/components/subpages/longtable";
     export default {
+        components: {
+    navg,
+    longtable
+  },
         data () {
             return {
                 defaultList: [

@@ -5,6 +5,7 @@ import Excel from '@/components/pages/excel.vue'
 import Trend from '@/components/pages/trend.vue'
 import Setting from '@/components/pages/Setting.vue'
 import Analyse from '@/components/pages/Analysis.vue'
+import test from '@/components/pages/test.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -42,6 +43,10 @@ export default new Router({
     {
       path: '*',
       redirect: '/'
-    }
+    },{
+      path: '/test',
+      name: 'test',
+      component: test
+    },
   ]
 })

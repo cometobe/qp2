@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import excel from "@/utils/ejs.js";
+// import excel from "@/utils/ejs.js";
 import echarts from "echarts";
 import { get, post, del } from "@/api/api.js";
 import moment from "moment";

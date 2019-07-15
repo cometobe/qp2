@@ -30,7 +30,7 @@
   </div>
 </template>
 <script>
-import excel from '@/utils/ejs.js'
+// import excel from '@/utils/ejs.js'
 export default {
   name: 'DataQualityInspectionStatistics',
   data() {
