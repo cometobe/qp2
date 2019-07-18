@@ -85,7 +85,21 @@ export default {
         // console.log(this.tableData,"数据检查",this.$store.state.standlib.data)
         // console.log("getter",this.$store.getters.members)
         //2更新标准库数据
-    this.$store.dispatch("getlib").then(); 
+    this.$store.dispatch("getmember").then(() => {
+      console.log("lastthen", this.$store.state);
+      console.log(
+        moment(this.$store.state.setting.formDynamic.date).format("YYYY-MM"),
+        this.$store.getters.members
+      );
+      this.$store.dispatch("handlerdata", {
+        m: this.$store.getters.members,
+        month: moment(this.$store.state.setting.formDynamic.date).format(
+          "YYYY-MM"
+        )
+      });
+    }).then(() => {
+        this.$store.dispatch("getlib")
+      });
   },
   computed:{
  tableData1(){

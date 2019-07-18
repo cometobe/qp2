@@ -223,6 +223,21 @@ export default {
   mounted(){
     this.$store.dispatch("getodata");
     console.log("mounted getters",this.$store.getters.alltaskid)
+    this.$store.dispatch("getmember").then(() => {
+      console.log("lastthen", this.$store.state);
+      console.log(
+        moment(this.$store.state.setting.formDynamic.date).format("YYYY-MM"),
+        this.$store.getters.members
+      );
+      this.$store.dispatch("handlerdata", {
+        m: this.$store.getters.members,
+        month: moment(this.$store.state.setting.formDynamic.date).format(
+          "YYYY-MM"
+        )
+      });
+    }).then(() => {
+        this.$store.dispatch("getlib")
+      });
   },
   methods: {
     handlerone(){

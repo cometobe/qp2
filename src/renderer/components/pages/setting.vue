@@ -123,16 +123,32 @@ export default {
   },
 
   mounted() {
+    this.$store.dispatch("getmember").then(() => {
+      console.log("lastthen", this.$store.state);
+      console.log(
+        moment(this.$store.state.setting.formDynamic.date).format("YYYY-MM"),
+        this.$store.getters.members
+      );
+      this.$store.dispatch("handlerdata", {
+        m: this.$store.getters.members,
+        month: moment(this.$store.state.setting.formDynamic.date).format(
+          "YYYY-MM"
+        )
+      });
+    }).then(() => {
+        this.$store.dispatch("getlib")
+      });
     this.formDynamic = this.$store.state.setting.formDynamic;
   },
   methods: {
     handleSubmit() {
+      this.formDynamic.date = moment(this.formDynamic.date).format("YYYY-MM");
       console.log(
         "点击提交",
         this.formDynamic,
         this.$store.state.setting.formDynamic
       );
-      this.formDynamic.date = moment(this.$store.state.setting.formDynamic.date).format("YYYY-MM");
+      
       post("/config/member", { formDynamic: this.formDynamic }).then(res => {
         this.$store.dispatch("getmember");
         console.log("检查state和本地", res, this.$store.state.setting);
