@@ -1,6 +1,6 @@
 {
   "name": "lianghuajixiaofuzhu",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "qushaojun",
   "description": "An electron-vue project",
   "license": null,
@@ -49,11 +49,11 @@
     "linux": {
       "icon": "build/icons"
     },
-    "nsis": { 
-      "oneClick": false,   
-      "allowToChangeInstallationDirectory": true, 
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
       "perMachine": true
-  }
+    }
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -62,6 +62,7 @@
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
+    "less-loader": "^5.0.0",
     "moment": "^2.24.0",
     "nedb": "^1.8.0",
     "vue": "^2.5.16",
@@ -92,6 +93,7 @@
     "electron-devtools-installer": "^2.2.4",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
+    "less": "^3.9.0",
     "mini-css-extract-plugin": "0.4.0",
     "multispinner": "^0.2.1",
     "node-loader": "^0.6.0",

@@ -46,10 +46,10 @@
             <Card style="width:220px">
               <div style="text-align:center">
                 <h1>
-                  <router-link to="/trend">
+                  <router-link to="/test">
                     <Icon type="ios-trending-up" size="200" />
                     <!-- <img src="~@/assets/3.png" width="200px"> -->
-                    积分查询
+                    积分汇总
                   </router-link>
                 </h1>
               </div>
@@ -97,7 +97,9 @@ export default {
           "YYYY-MM"
         )
       });
-    });
+    }).then(() => {
+        this.$store.dispatch("getlib")
+      });
   },
   methods: {
     open(link) {
@@ -117,7 +119,7 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+/* @import url(""); */
 
 /* * {
   box-sizing: border-box;

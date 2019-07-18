@@ -11,8 +11,8 @@
         <MenuItem name="excel">
           <Icon type="md-arrow-up" />数据导入
         </MenuItem>
-        <MenuItem name="trend">
-          <Icon type="md-list" />积分查询
+        <MenuItem name="test">
+          <Icon type="md-list" />积分汇总
         </MenuItem>
         <MenuItem name="analyse">
           <Icon type="md-analytics" />数据分析
@@ -20,9 +20,9 @@
         <MenuItem name="Setting">
           <Icon type="md-settings" />设置
         </MenuItem>
-        <MenuItem name="test">
+        <!-- <MenuItem name="test">
           <Icon type="md-settings" />测试
-        </MenuItem>
+        </MenuItem> -->
       </Menu>
     </Row>
   </div>

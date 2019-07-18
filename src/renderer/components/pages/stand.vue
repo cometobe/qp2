@@ -35,7 +35,10 @@
       </Row>
     </Card>
     <Row class="margin-top-10">
-      <Table stripe  :columns="tableTitle" :data="tableData1" />
+      <!-- <Table stripe  :columns="tableTitle" :data="tableData1" /> -->
+    </Row>
+    <Row>
+      <longlib></longlib>
     </Row>
     <!-- <row v-for="tab in tableData">
                 {{ tab }}
@@ -46,11 +49,13 @@
 <script>
 import excel from "@/utils/excel.js";
 import { get, post, del } from "@/api/api.js";
-import navg from '@/components/subpages/nav'
+import navg from '@/components/subpages/nav';
+import longlib from "@/components/subpages/longlib";
 export default {
   name: "stand",
   components: {
-    navg
+    navg,
+    longlib
   },
   data() {
     return {

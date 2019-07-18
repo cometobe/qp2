@@ -1,7 +1,15 @@
 import {app, BrowserWindow, remote,dialog} from 'electron'
 import {server} from './koaserver.js'//启动koa server
+// import {db} from "./newdb"//创建数据库文件
 const path = require('path');
 const {path1,path3} = require('./index.config.js')
+
+
+
+// const path = require('path');
+const Datastore = require('nedb');//配置nedb
+// const { path1, path3 } = require('./index.config.js')
+
 
 /**
  * Set `__static` path to static files in production

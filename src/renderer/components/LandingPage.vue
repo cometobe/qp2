@@ -17,11 +17,11 @@
             internal configurations, using the project structure, building your application,
             and so much more.
           </p>
-          <button @click="open('https://simulatedgreg.gitbooks.io/electron-vue/content/')">Read the Docs</button><br><br>
+          <!-- <button @click="open('https://simulatedgreg.gitbooks.io/electron-vue/content/')">Read the Docs</button><br><br> -->
         </div>
         <div class="doc">
           <div class="title alt">Other Documentation</div>
-          <button class="alt" @click="open('https://electron.atom.io/docs/')">Electron</button>
+          <!-- <button class="alt" @click="open('https://electron.atom.io/docs/')">Electron</button> -->
           <!-- <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Vue.js</button> -->
         </div>
       </div>
@@ -44,7 +44,7 @@
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+  @import url('');
 
   * {
     box-sizing: border-box;
