@@ -119,7 +119,7 @@ const getters = {
             let sum = 0
             for (let ee in e) {
                 if (e[ee]["最后积分"]) {
-                    sum = sum + parseInt(e[ee]["最后积分"])
+                    sum = sum + parseFloat(e[ee]["最后积分"])
                 }
             }
             return sum
