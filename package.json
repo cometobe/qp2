@@ -63,7 +63,7 @@
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "less-loader": "^5.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "nedb": "^1.8.0",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
